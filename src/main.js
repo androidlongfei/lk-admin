@@ -1,8 +1,11 @@
 import Vue from 'vue'
+
+import 'normalize.css/normalize.css' // reset css
+
 import App from './App'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import locale from 'element-ui/lib/locale/lang/en'
+import i18n from './lang' // Internationalization
 import store from './store/index'
 import 'vue-layer-mobile/need/layer.css'
 import layer from 'vue-layer-mobile'
@@ -12,13 +15,23 @@ import ReloadPage from './components/ReloadPage'
 import CustomHeader from './components/CustomHeader'
 import 'font-awesome/css/font-awesome.css'
 import VueScroller from 'vue-scroller'
+
+import './styles/index.scss' // global css
+
+import './icons' // icon
+
 // 引入echarts
 import echarts from 'echarts'
 import 'babel-polyfill'
 Vue.prototype.$echarts = echarts
 
-// ElementUI
-Vue.use(ElementUI, { locale })
+Vue.use(ElementUI, {
+    size: 'medium', // set element-ui default size
+    i18n: (key, value) => {
+        // console.log('key', i18n.t(key, value))
+        return i18n.t(key, value)
+    }
+})
 
 // use layer
 Vue.use(layer)
@@ -52,6 +65,7 @@ new Vue({
     el: '#app',
     store,
     router,
+    i18n,
     template: '<App/>',
     components: {
         App

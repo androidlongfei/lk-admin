@@ -11,6 +11,8 @@ const allIndicators = r => require.ensure([], () => r(require('../page/indicator
 // 增加指标
 const addIndicator = r => require.ensure([], () => r(require('../page/indicators/addIndicators/addIndicators')), 'addIndicator');
 
+// 登录
+const login = r => require.ensure([], () => r(require('../page/login')), 'login');
 
 Vue.use(Router);
 
@@ -45,7 +47,7 @@ export const constantRouterMap = [{
     component: allIndicators
 }, {
     path: '/login',
-    component: home,
+    component: login,
     hidden: true
 }, {
     path: '/authredirect',
