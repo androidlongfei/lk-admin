@@ -1,0 +1,100 @@
+{
+    "healthStatus": [
+        {
+            "quotaName": "血压",
+            "quotaUnit": "mmHg",
+            "quotaNormal": "2",
+            "quotaValue": "159/90"
+        },
+        {
+            "quotaName": "BMI指数",
+            "quotaUnit": "mmol/L",
+            "quotaNormal": "2",
+            "quotaValue": "7.8"
+        },
+        {
+            "quotaName": "心率",
+            "quotaUnit": "次/分",
+            "quotaNormal": "1",
+            "quotaValue": "71"
+        },
+        {
+            "quotaName": "血氧",
+            "quotaUnit": "",
+            "quotaNormal": "2",
+            "quotaValue": "96%"
+        },
+        {
+            "quotaName": "空腹血糖",
+            "quotaUnit": "mmol/L",
+            "quotaNormal": "2",
+            "quotaValue": "4.3"
+        },
+        {
+            "quotaName": "体脂",
+            "quotaUnit": "",
+            "quotaNormal": "1",
+            "quotaValue": "23%"
+        }
+    ],
+    "life": [
+        {
+            "name": "food",
+            "code": "1",
+            "value": ""
+        },
+        {
+            "name": "exerciseFrequency",
+            "code": "2",
+            "value": ""
+        },
+        {
+            "name": "sleepQuality",
+            "code": "1",
+            "value": ""
+        },
+        {
+            "name": "psychology",
+            "code": "2",
+            "value": ""
+        }
+    ],
+    "disease": {
+        "allergen": [
+            {
+                "code": "1",
+                "value": ""
+            }
+        ],
+        "jw_his": [
+            {
+                "code": "1",
+                "value": ""
+            }
+        ],
+        "family_his": [
+            {
+                "code": "1",
+                "value": ""
+            }
+        ],
+        "hereditary_his": [
+            {
+                "code": "1",
+                "value": ""
+            }
+        ]
+    },
+    "record": {
+        "reportDate": "2017-12-13 10:10:09",
+        "reportAdress": "慈铭潘家园",
+        "reportName": "慈铭体检报告"
+    },
+    "basicInformation": {
+        "userName": "张奎荣",
+        "gender": "1",
+        "age": "28",
+        "blood": "1",
+        "lessee": "1"
+    }
+}

@@ -1,0 +1,169 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 100%;
+	height: 100%;
+	background: #E4E4E4;
+}
+#wrapper {
+    text-align: left;
+}
+#principle li{
+	list-style: none;
+}
+#principle,#recipes,#shouldEat,#avoid,#tuijian{
+	background: #fff;
+	margin: 10px 0px;
+	padding: 10px;
+}
+
+.title{
+	margin: 0;
+    padding-left: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+}
+.recipes_title{
+	margin: 0;
+    padding-left: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+}
+.principle_list{
+	margin: 0;
+	font-size: 16px;
+}
+.principle_list li{
+	margin: 5px 0;
+}
+#meal_list {
+	margin-top: 15px;
+}
+#meal_list dl{
+	display: flex;
+	border-bottom: 1px solid gainsboro;
+}
+#meal_list dl dt{
+	width: 160px;
+}
+#meal_list dl dt img{
+	width: 100%;
+}
+#meal_list dl dd{
+	flex: 1;
+}
+dt+dd{
+	margin-top: 0 !important;
+	/*padding-left: 10px;*/
+}
+dl{
+	margin-top: 0 !important;
+}
+.meal{
+	line-height: 12px;
+}
+.foods{
+	font-size: 12px;
+	width: 100%;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+
+.avoid_list{
+	/*display: flex;*/
+}
+.avoid_list dl{
+	vertical-align: top;
+	display: inline-block;
+	width:49%;
+}
+
+/*
+#tuijian dl dt{
+	width: 100px;height: 100px;
+	border: 1px solid #E4E4E4;
+}
+#tuijian dl dt img{
+	width: 100%;
+}
+#tuijian dl{
+	 width: 30%;
+	 margin: 5px 4px;
+	display: inline-block;
+}
+#tuijian dl dd{
+	background: #E4E4E4;
+	text-align: center;
+	padding: 2px 0;
+}*/
+.breakfast_wrapper{
+	width: 100%;
+}
+.breakfast_wrapper dl{
+	display: inline-block;
+	width: 30%;
+	margin: 4px;
+}
+.breakfast_wrapper dl dt{
+	width: 100%;
+}
+.breakfast_wrapper dl dt img{
+	width: 100%;
+	border: 1px solid #ccc;
+}
+.breakfast_wrapper dl dd{
+	background: #CCCCCC;
+}
+.breakfast_wrapper dl dd p{
+	line-height: 24px;
+	margin: 0;
+}
+.meal{
+	text-align: center;
+	font-size: 14px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.amount{
+	text-align: center;
+	font-size: 12px;
+	color: #9B9B9B;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+
+#morningMeal,#afternoon,#before_bed{
+	display: flex;
+}
+#morningMeal div,#afternoon div,#before_bed div{
+	line-height: 45px;
+}
+.addMealText{
+	width: 40%;
+	padding-left: 20px;
+}
+.addMealImg{
+	width: 50px;
+	height: 50px;
+}
+.addMealImg img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.addMealContent{
+	flex: 1;
+	line-height: 16px !important;
+	margin-top: 12px;
+	text-align: right;
+	font-size: 12px;
+	color: #4A4A4A;
+}

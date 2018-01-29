@@ -1,0 +1,71 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 100%;
+	height: 100%;
+	background: #FFFFFF;
+}
+
+#principle,#recommend{
+	background: #fff;
+	width: 90%;
+	margin: 0 auto;
+	/*margin: 5px;*/
+	padding: 10px;
+    text-align: left;
+}
+.recommend_item{
+	/*border: 1px solid black;*/
+	box-shadow: 0px 1px 3px gainsboro;
+	padding: 15px 0 25px 0;
+}
+.title{
+	margin: 0;
+    padding-left: 20px;
+    height: 30px;
+    line-height: 30px;
+}
+.principle_list{
+	margin-left: 0 !important;
+	list-style: none;
+	margin: 0;
+	font-size: 12px;
+}
+.principle_list li{
+	letter-spacing: 1px;
+}
+
+.recommend_item{
+	margin:16px 0 ;
+}
+.recommend_item_title p{
+	text-align: center;
+	color: #006600;
+}
+.recommend_item_title img{
+	width: 100%;
+	height: 120px;
+}
+
+.sports_plan{
+	padding:0 15px;
+}
+.be_careful{
+	padding:0 15px;
+}
+.sports_plan p,.be_careful p{
+	margin: 0;
+	font-size: 12px;
+}
+.sports_plan div,.be_careful div{
+	font-size: 14px;
+	font-weight: 600;
+}
+.sports_plan,.be_careful{
+	margin-top: 16px;
+}
+ol, ul {
+     padding-left: 0em;
+}
