@@ -93,12 +93,20 @@ export default {
                 if (valid) {
                     this.loading = true
                     this.$store.dispatch(LOGIN_BY_USERNAME, this.loginForm).then((res) => {
-                        console.log('login ui')
                         this.loading = false
-                        // this.$router.push({ path: '/' })
+                        let loginRequestStatus = this.$store.getters.loginRequestStatus
+                        if (!loginRequestStatus.isError) {
+                            // 登录成功
+                            let currentUserInfo = this.$store.getters.currentUserInfo
+                            console.log('登录成功,当前用户信息', currentUserInfo);
+                            // this.$router.push({ path: '/' })
+                        } else {
+                            // 登录失败
+                            console.log('登录失败', loginRequestStatus.message)
+                        }
                     }).catch(() => {
                         this.loading = false
-                        console.log('登录失败')
+                        console.log('登录错误')
                     })
                 } else {
                     console.log('error submit!!')

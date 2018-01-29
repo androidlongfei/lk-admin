@@ -4,6 +4,7 @@ import { login } from '../../../service/user'
 // 初始化state状态
 const state = {
     user: {}, // 当前用户
+    roles: [], // 权限
     requestStatus: {
         isError: false,
         message: ''
@@ -11,7 +12,7 @@ const state = {
 }
 
 const getters = {
-    getCurrentUserInfo: (state, getters, rootState) => {
+    currentUserInfo: (state, getters, rootState) => {
         return state.user
     },
     loginRequestStatus: (state) => {
@@ -26,14 +27,14 @@ const actions = {
         commit,
         state
     }, data) {
-        console.log('login param', data)
+        // console.log('login param', data)
         return new Promise((resolve, reject) => {
             login(data).then(res => {
-                console.log('login action success', res)
+                // console.log('login action success', res)
                 commit(LOGIN_SUCCESS_BY_USERNAME, res)
                 resolve(res)
             }).catch((ex) => {
-                console.log('login error', ex)
+                // console.log('login error', ex)
                 commit(LOGIN_FAILED_BY_USERNAME)
                 reject(ex)
             })
