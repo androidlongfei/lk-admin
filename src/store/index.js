@@ -3,9 +3,13 @@ import Vuex from 'vuex'
 import auth from '../page/auth/module'
 import home from '../page/home/module'
 
-import configStore from './config'
+import config from './config'
 import addIndicators from '../page/indicators/addIndicators/module'
 import allIndicators from '../page/indicators/allIndicators/module'
+
+import user from '../page/login/module'
+
+
 
 // 权限
 import permission from './permission'
@@ -21,10 +25,11 @@ export default new Vuex.Store({
     modules: {
         'auth': auth,
         'home': home,
-        'config': configStore,
+        'config': config,
         'addIndicators': addIndicators,
         'allIndicators': allIndicators,
-        'permission': permission
+        'permission': permission,
+        'user': user
     },
     state
 })

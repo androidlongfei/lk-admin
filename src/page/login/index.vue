@@ -38,10 +38,6 @@
 
     <el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog" append-to-body>
         {{$t('login.thirdpartyTips')}}
-        <!-- <br/>
-        <br/>
-        <br/>
-        <social-sign /> -->
     </el-dialog>
 
 </div>
@@ -50,7 +46,7 @@
 <script>
 import { isvalidUsername } from '../../utils/validate'
 import LangSelect from './component/LangSelect'
-// import SocialSign from './socialsignin'
+import { LOGIN_BY_USERNAME } from './module/mutations_types'
 
 export default {
     components: { LangSelect },
@@ -96,42 +92,20 @@ export default {
             this.$refs.loginForm.validate(valid => {
                 if (valid) {
                     this.loading = true
-                    this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
+                    this.$store.dispatch(LOGIN_BY_USERNAME, this.loginForm).then((res) => {
+                        console.log('login ui')
                         this.loading = false
-                        this.$router.push({ path: '/' })
+                        // this.$router.push({ path: '/' })
                     }).catch(() => {
                         this.loading = false
+                        console.log('登录失败')
                     })
                 } else {
                     console.log('error submit!!')
                     return false
                 }
             })
-        },
-        afterQRScan() {
-            // const hash = window.location.hash.slice(1)
-            // const hashObj = getQueryObject(hash)
-            // const originUrl = window.location.origin
-            // history.replaceState({}, '', originUrl)
-            // const codeMap = {
-            //   wechat: 'code',
-            //   tencent: 'code'
-            // }
-            // const codeName = hashObj[codeMap[this.auth_type]]
-            // if (!codeName) {
-            //   alert('第三方登录失败')
-            // } else {
-            //   this.$store.dispatch('LoginByThirdparty', codeName).then(() => {
-            //     this.$router.push({ path: '/' })
-            //   })
-            // }
         }
-    },
-    created() {
-        // window.addEventListener('hashchange', this.afterQRScan)
-    },
-    destroyed() {
-        // window.removeEventListener('hashchange', this.afterQRScan)
     },
     mounted() {
 

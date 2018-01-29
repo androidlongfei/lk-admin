@@ -5,15 +5,10 @@
  * routerMode: 路由模式
  *
  */
-//  程磊本机IP
-//  var baseUrl = 'http://10.4.52.84:8080'
-// var baseUrl = 'http://10.4.52.132:8080'
-// 测试 刘东
-// var baseUrl = 'http://10.4.52.132:8080'
-// 云地址
-// const baseUrl = 'http://lkj-web-dev-laikang.opaas.enncloud.cn'
 
-const baseUrl = 'http://lkj-web-dev-laikang.p.laikang.com'
+// const baseUrl = 'http://lkj-web-dev-laikang.p.laikang.com'
+
+const baseUrl = 'http://10.4.52.29:9100'
 
 // 代理服务器
 // const baseUrl = '/api'
