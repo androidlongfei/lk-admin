@@ -16,6 +16,8 @@ import CustomHeader from './components/CustomHeader'
 import 'font-awesome/css/font-awesome.css'
 import VueScroller from 'vue-scroller'
 
+import './permission'
+
 import './styles/index.scss' // global css
 
 import './icons' // icon

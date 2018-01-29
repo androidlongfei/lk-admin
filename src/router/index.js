@@ -104,31 +104,4 @@ const router = new Router({
     routes: constantRouterMap
 });
 
-const checkAuth = () => {
-    console.log('checkAuth', storage);
-    if (storage.lktoken) {
-        console.log('storage.lktoken', storage.lktoken);
-        return true
-    } else {
-        return false
-    }
-};
-// 权限校验
-router.beforeEach((to, from, next) => {
-    if (to.matched.some(r => r.meta.requireAuth)) {
-        if (checkAuth()) {
-            next()
-        } else {
-            next({
-                path: '/login',
-                query: {
-                    redirect: to.fullPath
-                }
-            })
-        }
-    } else {
-        next()
-    }
-});
-
 export default router

@@ -1,5 +1,5 @@
 import { LOGIN_BY_USERNAME, LOGIN_SUCCESS_BY_USERNAME, LOGIN_FAILED_BY_USERNAME } from './mutations_types'
-import { login } from '../../../service/user'
+import { login, getUserInfo, logout } from '../../../service/user'
 
 // 初始化state状态
 const state = {
@@ -17,6 +17,9 @@ const getters = {
     },
     loginRequestStatus: (state) => {
         return state.requestStatus
+    },
+    roles: (state) => {
+        return state.roles
     }
 }
 
@@ -37,6 +40,35 @@ const actions = {
                 // console.log('login error', ex)
                 commit(LOGIN_FAILED_BY_USERNAME)
                 reject(ex)
+            })
+        })
+    },
+    // 获取用户信息
+    GetUserInfo({ commit, state }) {
+        return new Promise((resolve, reject) => {
+            getUserInfo(state.token).then(response => {
+                const data = response.data
+                commit('SET_ROLES', data.roles)
+                commit('SET_NAME', data.name)
+                commit('SET_AVATAR', data.avatar)
+                commit('SET_INTRODUCTION', data.introduction)
+                resolve(response)
+            }).catch(error => {
+                reject(error)
+            })
+        })
+    },
+    // 登出
+    LogOut({ commit, state }) {
+        return new Promise((resolve, reject) => {
+            logout().then(() => {
+                commit('SET_TOKEN', '')
+                commit('SET_ROLES', [])
+                resolve()
+            }).catch(error => {
+                console.log(error)
+                resolve()
+                // reject(error)
             })
         })
     }
