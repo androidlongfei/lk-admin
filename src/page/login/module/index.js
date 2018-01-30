@@ -47,7 +47,7 @@ const actions = {
     [GET_USER_INFO]({ commit, state }) {
         return new Promise((resolve, reject) => {
             getUserInfo().then(res => {
-                console.log('getUserInfo', res)
+                // console.log('getUserInfo', res)
                 commit(GET_USER_INFO_SUCCESS, res)
                 resolve(res)
             }).catch(error => {

@@ -99,7 +99,7 @@ export default {
                             // 登录成功
                             let currentUserInfo = this.$store.getters.currentUserInfo
                             console.log('登录成功,当前用户信息', currentUserInfo);
-                            // this.$router.push({ path: '/' })
+                            this.$router.push({ path: '/' })
                         } else {
                             // 登录失败
                             console.log('登录失败', loginRequestStatus.message)

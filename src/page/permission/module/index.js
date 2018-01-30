@@ -31,7 +31,7 @@ const actions = {
             const {
                 roles
             } = data
-            console.log('GENERATE_ROUTER_BY_ROLES state', state)
+            // console.log('GENERATE_ROUTER_BY_ROLES state', state)
             let accessedRouters
             if (roles.indexOf('admin') >= 0) {
                 accessedRouters = asyncRouterMap
@@ -46,7 +46,7 @@ const actions = {
 
 const mutations = {
     SET_ROUTERS: (state, routers) => {
-        console.log('SET_ROUTERS', routers)
+        console.log('mutations generate routers', routers)
         state.addRouters = routers
         state.routers = constantRouterMap.concat(routers)
     }

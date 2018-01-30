@@ -42,7 +42,7 @@ router.beforeEach((to, from, next) => {
                 // 获取用户信息
                 store.dispatch(user.GET_USER_INFO).then(res => {
                     const roles = res.data.roles
-                    console.log('roles', roles)
+                    // console.log('roles', roles)
                     // ['editor','develop'] 根据用户的权限动态生成路由
                     store.dispatch(permission.GENERATE_ROUTER_BY_ROLES, {
                         roles
