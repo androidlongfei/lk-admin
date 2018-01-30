@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 // 懒加载
 
-const layout = r => require.ensure([], () => r(require('../page/layout/Layout')), 'layout')
+const layout = r => require.ensure([], () => r(require('../page/layout')), 'layout')
 
 // 登录
 const login = r => require.ensure([], () => r(require('../page/login')), 'login')
@@ -14,8 +14,12 @@ const dashboard = r => require.ensure([], () => r(require('../page/dashboard')),
 // documentation
 const documentation = r => require.ensure([], () => r(require('../page/documentation')), 'documentation')
 
-// jsonEditor
-const jsonEditor = r => require.ensure([], () => r(require('../page/components/children/JsonEditor')), 'JsonEditor')
+
+// -----example
+// form
+const form = r => require.ensure([], () => r(require('../page/example/form')), 'form')
+// table
+const table = r => require.ensure([], () => r(require('../page/example/table')), 'table')
 
 Vue.use(Router)
 
@@ -55,18 +59,23 @@ export const constantRouterMap = [{
 
 // 动态权限
 export const asyncRouterMap = [{
-    path: '/components',
+    path: '/example',
     component: layout,
-    name: 'components',
+    name: 'example',
     meta: {
-        title: 'components',
-        icon: 'component'
+        title: 'example',
+        icon: 'example'
     },
     children: [{
-        path: 'json-editor',
-        component: jsonEditor,
-        name: 'jsonEditor',
-        meta: { title: 'jsonEditor' }
+        path: 'form',
+        component: form,
+        name: 'form',
+        meta: { title: 'form', noCache: true }
+    }, {
+        path: 'table',
+        component: table,
+        name: 'table',
+        meta: { title: 'table', noCache: true }
     }]
 }]
 

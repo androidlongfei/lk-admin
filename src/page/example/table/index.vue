@@ -1,7 +1,7 @@
-<template lang="html">
-  <div class="">
-      这是jsonEditor组件
-  </div>
+<template>
+<div class="">
+    this is table
+</div>
 </template>
 
 <script>
