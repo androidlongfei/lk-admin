@@ -1,9 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import config from './config'
+import app from './config/app'
+import errorLog from './config/errorLog'
+import tagsView from './config/tagsView'
+
 import user from '../page/login/module'
 import permission from '../page/permission/module'
+
+import getters from './getters'
 
 const state = {
     loading: false
@@ -13,9 +18,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
-        'config': config,
-        'permission': permission,
-        'user': user
+        app,
+        errorLog,
+        tagsView,
+        permission,
+        user
     },
-    state
+    state,
+    getters
 })

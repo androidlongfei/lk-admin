@@ -6,7 +6,6 @@ import {
 import storage from './storageHelp'
 
 import store from '../store'
-import * as authType from '../page/auth/module/mutations_types'
 // import qs from 'qs'
 
 // 创建axios实例
@@ -66,7 +65,7 @@ service.interceptors.response.use(
             // 410 需要授权或者令牌过期。清除lktoken信息,并提示重新加载页面
             setTimeout(() => {
                 store.commit({
-                    type: authType.CLEAR_LKTOKEN,
+                    type: 'CLEAR_LKTOKEN',
                     payload: {
                         message: res.message
                     }
