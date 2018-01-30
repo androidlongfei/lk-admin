@@ -1,4 +1,4 @@
-import { LOGIN_BY_USERNAME, LOGIN_SUCCESS_BY_USERNAME, LOGIN_FAILED_BY_USERNAME } from './mutations_types'
+import { LOGIN_BY_USERNAME, LOGIN_SUCCESS_BY_USERNAME, LOGIN_FAILED_BY_USERNAME, GET_USER_INFO, GET_USER_INFO_SUCCESS } from './mutations_types'
 import { login, getUserInfo, logout } from '../../../service/user'
 
 // 初始化state状态
@@ -44,15 +44,12 @@ const actions = {
         })
     },
     // 获取用户信息
-    GetUserInfo({ commit, state }) {
+    [GET_USER_INFO]({ commit, state }) {
         return new Promise((resolve, reject) => {
-            getUserInfo(state.token).then(response => {
-                const data = response.data
-                commit('SET_ROLES', data.roles)
-                commit('SET_NAME', data.name)
-                commit('SET_AVATAR', data.avatar)
-                commit('SET_INTRODUCTION', data.introduction)
-                resolve(response)
+            getUserInfo().then(res => {
+                console.log('getUserInfo', res)
+                commit(GET_USER_INFO_SUCCESS, res)
+                resolve(res)
             }).catch(error => {
                 reject(error)
             })
@@ -75,6 +72,7 @@ const actions = {
 }
 
 const mutations = {
+    // 登录
     [LOGIN_SUCCESS_BY_USERNAME](state, data) {
         const content = data.data
         console.log('login mutation', data)
@@ -92,6 +90,15 @@ const mutations = {
         // 登录失败
         state.requestStatus.isError = true
         state.requestStatus.message = '登录失败,服务器异常'
+    },
+    [GET_USER_INFO_SUCCESS](state, data) {
+        // 获取用户信息成功
+        console.log('getUserInfo mutations', data)
+        const content = data.data
+        if (data.status === '1') {
+            state.roles = content.roles
+            state.user = content.user
+        }
     }
 }
 

@@ -9,10 +9,8 @@ import allIndicators from '../page/indicators/allIndicators/module'
 
 import user from '../page/login/module'
 
-
-
 // 权限
-import permission from './permission'
+import permission from '../page/permission/module'
 
 const state = {
     loading: false

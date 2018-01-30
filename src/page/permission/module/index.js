@@ -2,10 +2,12 @@
  * 权限状态管理
  */
 
+import { GENERATE_ROUTER_BY_ROLES, SET_ROUTERS } from './mutations_types'
+
 import {
     asyncRouterMap,
     constantRouterMap
-} from '../../router'
+} from '../../../router'
 
 // 初始化state状态
 const state = {
@@ -14,24 +16,29 @@ const state = {
 }
 
 const getters = {
-
+    addRouters: (state, getters, rootState) => {
+        return state.addRouters
+    }
 }
 
 const actions = {
-    GenerateRoutes({
-        commit
+    [GENERATE_ROUTER_BY_ROLES]({
+        dispatch,
+        commit,
+        state
     }, data) {
         return new Promise(resolve => {
             const {
                 roles
             } = data
+            console.log('GENERATE_ROUTER_BY_ROLES state', state)
             let accessedRouters
             if (roles.indexOf('admin') >= 0) {
                 accessedRouters = asyncRouterMap
             } else {
                 accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
             }
-            commit('SET_ROUTERS', accessedRouters)
+            commit(SET_ROUTERS, accessedRouters)
             resolve()
         })
     }

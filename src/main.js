@@ -16,7 +16,8 @@ import CustomHeader from './components/CustomHeader'
 import 'font-awesome/css/font-awesome.css'
 import VueScroller from 'vue-scroller'
 
-import './permission'
+// 权限控制器
+import './page/permission'
 
 import './styles/index.scss' // global css
 

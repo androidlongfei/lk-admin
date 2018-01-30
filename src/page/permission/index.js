@@ -1,10 +1,12 @@
-import router from './router'
-import store from './store'
+import router from '../../router'
+import store from '../../store'
 import {
     Message
 } from 'element-ui'
+import * as user from '../login/module/mutations_types'
+import * as permission from './module/mutations_types'
 
-import storage from './config/storageHelp'
+import storage from '../../config/storageHelp'
 
 function hasPermission(roles, permissionRoles) {
     if (roles.indexOf('admin') >= 0) return true // admin permission passed directly
@@ -16,9 +18,9 @@ function hasPermission(roles, permissionRoles) {
 const whiteList = ['/login', '/authredirect']
 
 const checkAuth = () => {
-    console.log('checkAuth', storage);
+    // console.log('checkAuth', storage);
     if (storage.lktoken) {
-        console.log('storage.lktoken', storage.lktoken);
+        // console.log('storage.lktoken', storage.lktoken);
         return true
     } else {
         return true
@@ -26,8 +28,9 @@ const checkAuth = () => {
 };
 // 权限校验
 router.beforeEach((to, from, next) => {
+    // 有token
     if (checkAuth()) {
-        // 有token
+        console.log('to.path', to.path)
         if (to.path === '/login') {
             // next({
             //     path: '/'
@@ -36,16 +39,22 @@ router.beforeEach((to, from, next) => {
         } else {
             // 判断当前用户是否已拉取完user_info信息
             if (store.getters.roles.length === 0) {
-                store.dispatch('GetUserInfo').then(res => { // 拉取user_info
-                    console.log('用户的权限 res', res)
-                    const roles = res.data.roles // note: roles must be a array! such as: ['editor','develop']
-                    store.dispatch('GenerateRoutes', {
+                // 获取用户信息
+                store.dispatch(user.GET_USER_INFO).then(res => {
+                    const roles = res.data.roles
+                    console.log('roles', roles)
+                    // ['editor','develop'] 根据用户的权限动态生成路由
+                    store.dispatch(permission.GENERATE_ROUTER_BY_ROLES, {
                         roles
-                    }).then(() => { // 根据roles权限生成可访问的路由表
-                        router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
+                    }).then(() => {
+                        // 根据roles权限生成可访问的路由表
+                        // console.log('store.getters.addRouters', store.getters.addRouters)
+                        // 动态添加可访问路由表
+                        router.addRoutes(store.getters.addRouters)
+                        // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
                         next({ ...to,
                             replace: true
-                        }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
+                        })
                     })
                 }).catch(() => {
                     console.log('LogOut')
