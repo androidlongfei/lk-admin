@@ -70,12 +70,12 @@ export const asyncRouterMap = [{
         path: 'form',
         component: form,
         name: 'form',
-        meta: { title: 'form', noCache: true }
+        meta: { title: 'form', icon: 'form', noCache: true }
     }, {
         path: 'table',
         component: table,
         name: 'table',
-        meta: { title: 'table', noCache: true }
+        meta: { title: 'table', icon: 'table', noCache: true }
     }]
 }]
 

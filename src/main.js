@@ -7,26 +7,22 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import i18n from './lang' // Internationalization
 import store from './store/index'
-import 'vue-layer-mobile/need/layer.css'
-import layer from 'vue-layer-mobile'
 import router from './router'
 import globalFun from './config/globalFun'
 import ReloadPage from './components/ReloadPage'
 import CustomHeader from './components/CustomHeader'
 import 'font-awesome/css/font-awesome.css'
-import VueScroller from 'vue-scroller'
 
-// 权限控制器
-import './page/permission'
+
 
 import './styles/index.scss' // global css
 
 import './icons' // icon
 
-// 引入echarts
-import echarts from 'echarts'
+// 权限控制器
+import './page/permission'
+
 import 'babel-polyfill'
-Vue.prototype.$echarts = echarts
 
 Vue.use(ElementUI, {
     size: 'medium', // set element-ui default size
@@ -36,11 +32,6 @@ Vue.use(ElementUI, {
     }
 })
 
-// use layer
-Vue.use(layer)
-
-//  滚动插件
-Vue.use(VueScroller)
 // 全局方法
 Vue.use(globalFun)
 

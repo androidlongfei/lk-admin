@@ -5,6 +5,8 @@ import { login, getUserInfo, logout } from '../../../service/user'
 const state = {
     user: {}, // 当前用户
     roles: [], // 权限
+    name: '',
+    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     requestStatus: {
         isError: false,
         message: ''
