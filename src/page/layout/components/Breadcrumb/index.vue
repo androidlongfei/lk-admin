@@ -1,4 +1,5 @@
 <template>
+<!-- 面包屑组件 -->
 <el-breadcrumb class="app-breadcrumb" separator="/">
     <transition-group name="breadcrumb">
         <el-breadcrumb-item v-for="(item,index)  in levelList" :key="item.path" v-if='item.meta.title'>
@@ -22,12 +23,16 @@ export default {
     },
     watch: {
         $route() {
+            // 实时监控路由的改变
             this.getBreadcrumb()
+            console.log('breadcrumb component => 路由改变', this.levelList)
         }
     },
     methods: {
         generateTitle,
         getBreadcrumb() {
+            // console.log('this.$route.matched breadcrumb', this.$route.matched)
+            // $route.matched 数组，包含当前匹配的路径中所包含的所有片段所对应的配置参数对象。
             let matched = this.$route.matched.filter(item => item.name)
             const first = matched[0]
             if (first && first.name !== 'dashboard') {
@@ -35,6 +40,9 @@ export default {
             }
             this.levelList = matched
         }
+    },
+    mounted() {
+        console.log('breadcrumb component mounted', this.levelList)
     }
 }
 </script>

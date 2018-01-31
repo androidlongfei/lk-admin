@@ -24,6 +24,12 @@ export default {
         sidebar() {
             return this.$store.state.app.sidebar
         }
+    },
+    mounted() {
+        console.log('layout component mounted =>', this.$store.state.app.sidebar)
+    },
+    updated() {
+        console.log('layout component updated =>', this.$store.state.app.sidebar)
     }
 }
 </script>

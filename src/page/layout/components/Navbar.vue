@@ -1,38 +1,47 @@
 <template>
 <el-menu class="navbar" mode="horizontal">
+    <!-- 收起侧边栏组件 sidebar.opened=false 收起侧边栏-->
     <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
-
+    <!-- 显示路由列表组件  首页/综合实例/表单-->
     <breadcrumb class="breadcrumb-container"></breadcrumb>
 
     <div class="right-menu">
+        <!-- 显示错误log组件 -->
         <error-log class="errLog-container right-menu-item"></error-log>
 
         <el-tooltip effect="dark" :content="$t('navbar.screenfull')" placement="bottom">
+            <!-- 全屏组件 -->
             <screenfull class="screenfull right-menu-item"></screenfull>
         </el-tooltip>
 
+        <!-- 语言选择组件 -->
         <lang-select class="international right-menu-item"></lang-select>
 
         <el-tooltip effect="dark" :content="$t('navbar.theme')" placement="bottom">
+            <!-- 换肤组件 -->
             <theme-picker class="theme-switch right-menu-item"></theme-picker>
         </el-tooltip>
 
         <el-dropdown class="avatar-container right-menu-item" trigger="click">
             <div class="avatar-wrapper">
+                <!-- 设置用户头像 -->
                 <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
                 <i class="el-icon-caret-bottom"></i>
             </div>
             <el-dropdown-menu slot="dropdown">
+                <!-- 首页路由 -->
                 <router-link to="/">
                     <el-dropdown-item>
                         {{$t('navbar.dashboard')}}
                     </el-dropdown-item>
                 </router-link>
+                <!-- 项目地址路由 -->
                 <a target='_blank' href="https://github.com/PanJiaChen/vue-element-admin/">
                     <el-dropdown-item>
                         {{$t('navbar.github')}}
                     </el-dropdown-item>
                 </a>
+                <!-- 退出 -->
                 <el-dropdown-item divided>
                     <span @click="logout" style="display:block;">{{$t('navbar.logOut')}}</span>
                 </el-dropdown-item>
@@ -69,6 +78,7 @@ export default {
     },
     methods: {
         toggleSideBar() {
+            console.log('Navbar component => toggleSideBar', this.$store.state.app.sidebar)
             this.$store.dispatch('toggleSideBar')
         },
         logout() {
@@ -76,6 +86,14 @@ export default {
                 location.reload() // In order to re-instantiate the vue-router object to avoid bugs
             })
         }
+    },
+
+    mounted() {
+        console.log('Navbar component mounted =>', this.$store.state.app.sidebar);
+    },
+
+    updated() {
+        console.log('Navbar component updated =>', this.$store.state.app.sidebar);
     }
 }
 </script>

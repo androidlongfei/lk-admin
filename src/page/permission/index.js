@@ -15,7 +15,7 @@ function hasPermission(roles, permissionRoles) {
 }
 
 // 不需要token
-const whiteList = ['/login', '/authredirect']
+const whiteList = ['/login']
 
 const checkAuth = () => {
     // console.log('checkAuth', storage);
