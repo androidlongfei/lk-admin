@@ -10,14 +10,11 @@ import store from './store/index'
 import router from './router'
 import globalFun from './config/globalFun'
 import ReloadPage from './components/ReloadPage'
-import CustomHeader from './components/CustomHeader'
 import 'font-awesome/css/font-awesome.css'
 
 
-
 import './styles/index.scss' // global css
-
-import './icons' // icon
+import './icons' // svg icon
 
 // 权限控制器
 import './page/permission'
@@ -38,8 +35,6 @@ Vue.use(globalFun)
 // 注册全局组件
 // 服务器出错, 重新加载组件
 Vue.component('reload-page', ReloadPage)
-// 标题栏组件
-Vue.component('custom-header', CustomHeader)
 
 // 配置是否允许 vue-devtools 检查代码。开发版本默认为 true，生产版本默认为 false。
 Vue.config.devtools = true
