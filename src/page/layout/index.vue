@@ -1,4 +1,5 @@
 <template>
+<!-- styles/sidebar.scss -->
 <div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
     <sidebar class="sidebar-container"></sidebar>
     <div class="main-container">

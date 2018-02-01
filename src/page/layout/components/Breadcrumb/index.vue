@@ -43,6 +43,9 @@ export default {
     },
     mounted() {
         console.log('breadcrumb component mounted', this.levelList)
+    },
+    destoryed() {
+        console.log('breadcrumb component destoryed')
     }
 }
 </script>

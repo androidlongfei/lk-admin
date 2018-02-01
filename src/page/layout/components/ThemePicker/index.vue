@@ -1,4 +1,5 @@
 <template>
+<!-- ColorPicker 颜色选择器组件 -->
 <el-color-picker class="theme-picker" popper-class="theme-picker-dropdown" v-model="theme"></el-color-picker>
 </template>
 

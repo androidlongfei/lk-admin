@@ -2,13 +2,14 @@
 <el-menu class="navbar" mode="horizontal">
     <!-- 收起侧边栏组件 sidebar.opened=false 收起侧边栏-->
     <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
-    <!-- 显示路由列表组件  首页/综合实例/表单-->
+    <!-- 面包屑组件  首页/综合实例/表单-->
     <breadcrumb class="breadcrumb-container"></breadcrumb>
 
     <div class="right-menu">
         <!-- 显示错误log组件 -->
         <error-log class="errLog-container right-menu-item"></error-log>
 
+        <!-- Tooltip 文字提示组件 -->
         <el-tooltip effect="dark" :content="$t('navbar.screenfull')" placement="bottom">
             <!-- 全屏组件 -->
             <screenfull class="screenfull right-menu-item"></screenfull>

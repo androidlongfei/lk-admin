@@ -47,6 +47,7 @@ export default {
         }
     },
     mounted() {
+        console.log('TagsView component => mounted')
         this.addViewTags()
     },
     methods: {
