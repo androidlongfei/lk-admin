@@ -30,6 +30,7 @@ export default {
     },
     computed: {
         visitedViews() {
+            console.log('TagsView component => 路由改变', this.$store.state.tagsView.visitedViews)
             return this.$store.state.tagsView.visitedViews
         }
     },

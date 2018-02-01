@@ -77,7 +77,7 @@ export const asyncRouterMap = [{
             path: 'drap-table',
             component: drapTable,
             name: 'drapTable',
-            meta: { title: 'dragTable', icon: 'table', noCache: true }
+            meta: { title: 'dragTable', icon: 'table', noCache: false }
         }]
     }]
 }, {

@@ -27,11 +27,12 @@ export default {
     },
     computed: {
         sidebar() {
+            console.log('layout component sidebar.opened =>', this.$store.state.app.sidebar.opened)
             return this.$store.state.app.sidebar
         }
     },
     mounted() {
-        console.log('layout component mounted =>', this.$store.state.app.sidebar)
+        // console.log('layout component mounted =>', this.$store.state.app.sidebar)
     },
     updated() {
         // console.log('layout component updated =>', this.$store.state.app.sidebar)
