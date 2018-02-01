@@ -1,7 +1,7 @@
 <template>
 <scroll-bar>
     <el-menu mode="vertical" :default-active="$route.path" :collapse="isCollapse" background-color="#304156" text-color="#bfcbd9" active-text-color="#409EFF">
-        <sidebar-item :routes="permission_routers"></sidebar-item>
+        <sidebar-item :routes="permissionRouter"></sidebar-item>
     </el-menu>
 </scroll-bar>
 </template>
@@ -11,11 +11,16 @@ import { mapGetters } from 'vuex'
 import SidebarItem from './SidebarItem'
 import ScrollBar from '../ScrollBar'
 
+/**
+ * permissionRouter => store.permission.routers
+ * sidebar => store.app.sidebar
+ */
+
 export default {
     components: { SidebarItem, ScrollBar },
     computed: {
         ...mapGetters([
-            'permission_routers',
+            'permissionRouter',
             'sidebar'
         ]),
         isCollapse() {
@@ -23,7 +28,7 @@ export default {
         }
     },
     mounted() {
-        console.log('sidebar component mounted =>', this.$store.getters.permission_routers)
+        // console.log('sidebar component mounted =>', this.$store.getters.permissionRouter)
     }
 }
 </script>

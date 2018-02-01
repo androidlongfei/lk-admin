@@ -91,10 +91,6 @@ export default {
 
     mounted() {
         console.log('Navbar component mounted =>', this.$store.state.app.sidebar);
-    },
-
-    updated() {
-        console.log('Navbar component updated =>', this.$store.state.app.sidebar);
     }
 }
 </script>

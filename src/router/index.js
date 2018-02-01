@@ -20,6 +20,8 @@ const documentation = r => require.ensure([], () => r(require('../page/documenta
 const form = r => require.ensure([], () => r(require('../page/example/form')), 'form')
 // table
 const table = r => require.ensure([], () => r(require('../page/example/table')), 'table')
+const complexTable = r => require.ensure([], () => r(require('../page/example/table/complexTable')), 'complexTable')
+const drapTable = r => require.ensure([], () => r(require('../page/example/table/drapTable')), 'drapTable')
 
 Vue.use(Router)
 
@@ -45,16 +47,6 @@ export const constantRouterMap = [{
         name: 'dashboard',
         meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
     }]
-}, {
-    path: '/documentation',
-    component: layout,
-    redirect: '/documentation/index',
-    children: [{
-        path: 'index',
-        component: documentation,
-        name: 'documentation',
-        meta: { title: 'documentation', icon: 'documentation', noCache: true }
-    }]
 }]
 
 // 动态权限
@@ -72,10 +64,31 @@ export const asyncRouterMap = [{
         name: 'form',
         meta: { title: 'form', icon: 'form', noCache: true }
     }, {
-        path: 'table',
+        path: '/example/table',
         component: table,
         name: 'table',
-        meta: { title: 'table', icon: 'table', noCache: true }
+        meta: { title: 'Table', icon: 'table' },
+        children: [{
+            path: 'complex-table',
+            component: complexTable,
+            name: 'complexTable',
+            meta: { title: 'complexTable', icon: 'table', noCache: true }
+        }, {
+            path: 'drap-table',
+            component: drapTable,
+            name: 'drapTable',
+            meta: { title: 'dragTable', icon: 'table', noCache: true }
+        }]
+    }]
+}, {
+    path: '/documentation',
+    component: layout,
+    redirect: '/documentation/index',
+    children: [{
+        path: 'index',
+        component: documentation,
+        name: 'documentation',
+        meta: { title: 'documentation', icon: 'documentation', noCache: true }
     }]
 }]
 

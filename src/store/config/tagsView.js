@@ -1,7 +1,7 @@
 const tagsView = {
     state: {
-        visitedViews: [],
-        cachedViews: []
+        visitedViews: [], // 在tag栏目显示
+        cachedViews: [] // 缓存，主要在keep-alive中使用
     },
     mutations: {
         ADD_VISITED_VIEWS: (state, view) => {

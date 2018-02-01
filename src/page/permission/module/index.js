@@ -18,6 +18,9 @@ const state = {
 const getters = {
     addRouters: (state, getters, rootState) => {
         return state.addRouters
+    },
+    permissionRouter: (state, getters, rootState) => {
+        return state.routers
     }
 }
 

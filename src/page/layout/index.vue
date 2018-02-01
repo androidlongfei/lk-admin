@@ -13,6 +13,10 @@
 <script>
 import { Navbar, Sidebar, AppMain, TagsView } from './components'
 
+/**
+ * sidebar => store.app.sidebar
+ */
+
 export default {
     name: 'layout',
     components: {
@@ -30,7 +34,7 @@ export default {
         console.log('layout component mounted =>', this.$store.state.app.sidebar)
     },
     updated() {
-        console.log('layout component updated =>', this.$store.state.app.sidebar)
+        // console.log('layout component updated =>', this.$store.state.app.sidebar)
     }
 }
 </script>
