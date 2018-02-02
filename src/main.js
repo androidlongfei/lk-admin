@@ -10,6 +10,7 @@ import store from './store/index'
 import router from './router'
 import globalFun from './config/globalFun'
 import ReloadPage from './components/ReloadPage'
+import moment from 'moment'
 import 'font-awesome/css/font-awesome.css'
 
 import './styles/index.scss' // global css
@@ -30,6 +31,9 @@ Vue.use(ElementUI, {
 
 // 全局方法
 Vue.use(globalFun)
+
+// 全局引用moment
+Object.defineProperty(Vue.prototype, '$moment', { value: moment })
 
 // 注册全局组件
 // 服务器出错, 重新加载组件

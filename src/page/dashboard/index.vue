@@ -14,7 +14,9 @@ export default {
     methods: {
 
     },
-    mounted() {}
+    mounted() {
+        console.log('The time is ', this.$moment().format('HH:mm'))
+    }
 }
 </script>
 

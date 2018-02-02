@@ -30,6 +30,13 @@ const errorPage401 = r => require.ensure([], () => r(require('../page/errorPage/
 // 找不到页面
 const errorPage404 = r => require.ensure([], () => r(require('../page/errorPage/404')), 'errorPage404')
 
+
+/**
+ * 配置详解
+ * hidden: true 路由不会再侧边栏出现 如401，login等页面(默认 false)
+ * redirect: 'noredirect' 表示该路由不会在面包屑导航中出现
+ */
+
 Vue.use(Router)
 
 export const constantRouterMap = [{
@@ -64,6 +71,7 @@ export const constantRouterMap = [{
 export const asyncRouterMap = [{
     path: '/example',
     component: layout,
+    redirect: 'noredirect',
     name: 'example',
     meta: {
         title: 'example',
@@ -72,11 +80,12 @@ export const asyncRouterMap = [{
     children: [{
         path: 'form',
         component: form,
-        name: 'form',
-        meta: { title: 'form', icon: 'form', noCache: true }
+        name: 'testForm',
+        meta: { title: 'form', icon: 'form', noCache: false }
     }, {
         path: '/example/table',
         component: table,
+        redirect: 'noredirect',
         name: 'table',
         meta: { title: 'Table', icon: 'table' },
         children: [{
