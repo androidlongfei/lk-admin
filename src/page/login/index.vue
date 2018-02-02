@@ -102,7 +102,11 @@ export default {
                             this.$router.push({ path: '/' })
                         } else {
                             // 登录失败
-                            console.log('登录失败', loginRequestStatus.message)
+                            console.log('登录失败1', loginRequestStatus.message)
+                            this.$notify.error({
+                                title: '错误',
+                                message: loginRequestStatus.message
+                            })
                         }
                     }).catch(() => {
                         this.loading = false

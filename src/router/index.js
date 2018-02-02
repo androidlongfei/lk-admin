@@ -23,6 +23,13 @@ const table = r => require.ensure([], () => r(require('../page/example/table')),
 const complexTable = r => require.ensure([], () => r(require('../page/example/table/complexTable')), 'complexTable')
 const drapTable = r => require.ensure([], () => r(require('../page/example/table/drapTable')), 'drapTable')
 
+
+// errorPage
+// 无权限
+const errorPage401 = r => require.ensure([], () => r(require('../page/errorPage/401')), 'errorPage401')
+// 找不到页面
+const errorPage404 = r => require.ensure([], () => r(require('../page/errorPage/404')), 'errorPage404')
+
 Vue.use(Router)
 
 export const constantRouterMap = [{
@@ -31,11 +38,11 @@ export const constantRouterMap = [{
     hidden: true
 }, {
     path: '/404',
-    component: dashboard,
+    component: errorPage404,
     hidden: true
 }, {
     path: '/401',
-    component: dashboard,
+    component: errorPage401,
     hidden: true
 }, {
     path: '',
@@ -47,6 +54,10 @@ export const constantRouterMap = [{
         name: 'dashboard',
         meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
     }]
+}, {
+    path: '*',
+    redirect: '/404',
+    hidden: true
 }]
 
 // 动态权限
@@ -90,6 +101,19 @@ export const asyncRouterMap = [{
         name: 'documentation',
         meta: { title: 'documentation', icon: 'documentation', noCache: true }
     }]
+}, {
+    path: '/error',
+    component: layout,
+    redirect: 'noredirect',
+    name: 'errorPages',
+    meta: {
+        title: 'errorPages',
+        icon: '404'
+    },
+    children: [
+        { path: '401', component: errorPage401, name: 'page401', meta: { title: 'page401', noCache: true } },
+        { path: '404', component: errorPage404, name: 'page404', meta: { title: 'page404', noCache: true } }
+    ]
 }]
 
 const router = new Router({

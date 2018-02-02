@@ -3,10 +3,14 @@ import {
     baseUrl,
     lktoken
 } from './env'
+import { Loading } from 'element-ui'; // 全局loading
 import storage from './storageHelp'
 
 import store from '../store'
 // import qs from 'qs'
+
+let isShowElementLoading = true // 默认显示loading
+let elementLoadingObj = null
 
 // 创建axios实例
 const service = axios.create({
@@ -39,6 +43,8 @@ const service = axios.create({
 
 // request 请求拦截器, 主要是请求统一增加token
 service.interceptors.request.use(config => {
+    // 发送请求前，增加Loading
+    showElementLoading()
     if (storage.lktoken) {
         // 让每个请求携带token, 根据后台配置
         config.headers.lktoken = storage.lktoken
@@ -51,6 +57,12 @@ service.interceptors.request.use(config => {
 }, error => {
     // error
     //  console.log('interceptors request error', error)
+    console.log('发送失败')
+    Notification.error({
+        title: '发送失败',
+        message: error.message
+    })
+    closeElementLoading()
     Promise.reject(error)
 })
 
@@ -74,6 +86,7 @@ service.interceptors.response.use(
         } else if (res.code === '411') {
             // 411
         }
+        closeElementLoading()
         return response.data
     },
     error => {
@@ -91,14 +104,31 @@ service.interceptors.response.use(
                     break;
             }
         }
+        closeElementLoading()
         return Promise.reject(error.response)
     })
 
-export default async (url = '', data = {}, requesTtype = 'GET') => {
+const closeElementLoading = () => {
+    if (elementLoadingObj) {
+        elementLoadingObj.close()
+    }
+}
+
+const showElementLoading = () => {
+    if (isShowElementLoading) {
+        elementLoadingObj = Loading.service({ fullscreen: true, text: '正在加载中...' })
+    }
+}
+
+export default async (url = '', data = {}, requesTtype = 'GET', noShowloading) => {
     const type = requesTtype.toUpperCase()
     let requestConfig = {
         method: type,
         url: url
+    }
+    if (noShowloading) {
+        // 不显示 loading
+        isShowElementLoading = false
     }
     if (type === 'GET') {
         requestConfig.params = data

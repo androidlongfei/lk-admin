@@ -8,6 +8,13 @@ import * as permission from './module/mutations_types'
 
 import storage from '../../config/storageHelp'
 
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css' // progress bar style
+
+NProgress.configure({
+    showSpinner: false
+}) // NProgress Configuration
+
 function hasPermission(roles, permissionRoles) {
     if (roles.indexOf('admin') >= 0) return true // admin permission passed directly
     if (!permissionRoles) return true
@@ -28,6 +35,7 @@ const checkAuth = () => {
 };
 // 权限校验
 router.beforeEach((to, from, next) => {
+    NProgress.start()
     // 有token
     if (checkAuth()) {
         console.log('to.path', to.path)
@@ -36,6 +44,7 @@ router.beforeEach((to, from, next) => {
             //     path: '/'
             // })
             next()
+            NProgress.done()
         } else {
             // 判断当前用户是否已拉取完user_info信息
             if (store.getters.roles.length === 0) {
@@ -52,6 +61,7 @@ router.beforeEach((to, from, next) => {
                         // 动态添加可访问路由表
                         router.addRoutes(store.getters.addRouters)
                         // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
+                        console.log('替换');
                         next({ ...to,
                             replace: true
                         })
@@ -88,6 +98,11 @@ router.beforeEach((to, from, next) => {
         } else {
             // 既没token,又不在免登陆的名单中，全部重定向到登录页
             next('/login')
+            NProgress.done()
         }
     }
-});
+})
+
+router.afterEach(() => {
+    NProgress.done() // finish progress bar
+})

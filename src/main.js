@@ -12,7 +12,6 @@ import globalFun from './config/globalFun'
 import ReloadPage from './components/ReloadPage'
 import 'font-awesome/css/font-awesome.css'
 
-
 import './styles/index.scss' // global css
 import './icons' // svg icon
 
