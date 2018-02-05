@@ -30,6 +30,9 @@ const errorPage401 = r => require.ensure([], () => r(require('../page/errorPage/
 // 找不到页面
 const errorPage404 = r => require.ensure([], () => r(require('../page/errorPage/404')), 'errorPage404')
 
+// svg图标
+const svgIcons = r => require.ensure([], () => r(require('../page/svgIcons')), 'svgIcons')
+
 
 /**
  * 配置详解
@@ -61,10 +64,6 @@ export const constantRouterMap = [{
         name: 'dashboard',
         meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
     }]
-}, {
-    path: '*',
-    redirect: '/404',
-    hidden: true
 }]
 
 // 动态权限
@@ -123,6 +122,17 @@ export const asyncRouterMap = [{
         { path: '401', component: errorPage401, name: 'page401', meta: { title: 'page401', noCache: true } },
         { path: '404', component: errorPage404, name: 'page404', meta: { title: 'page404', noCache: true } }
     ]
+}, {
+    path: '/icon',
+    component: layout,
+    redirect: 'noredirect',
+    children: [
+        { path: 'index', component: svgIcons, name: 'icon', meta: { title: '图标', icon: 'icon', noCache: true } }
+    ]
+}, {
+    path: '*',
+    redirect: '/404',
+    hidden: true
 }]
 
 const router = new Router({
