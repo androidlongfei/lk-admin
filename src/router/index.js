@@ -127,7 +127,7 @@ export const asyncRouterMap = [{
     component: layout,
     redirect: 'noredirect',
     children: [
-        { path: 'index', component: svgIcons, name: 'icon', meta: { title: '图标', icon: 'icon', noCache: true } }
+        { path: 'index', component: svgIcons, name: 'icon', meta: { title: 'icons', icon: 'icon', noCache: true } }
     ]
 }, {
     path: '*',
